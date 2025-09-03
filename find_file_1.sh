@@ -20,9 +20,11 @@ echo "Searching for '$string' in directory: $FULL_PATH"
 echo "----------------------------------------"
 
 # Search for the text in all files in the directory
-if grep -rn "$string" "$FULL_PATH" 2>/dev/null; then
-    echo "----------------------------------------"
-    echo "Search completed successfully."
-else
-    echo "No occurrences of '$string' found in any files in '$FULL_PATH'"
-fi
+# Search through each file and count occurrences
+for file in $(find "$FULL_PATH" -type f); do
+    count=$(grep -o "$string" "$file" 2>/dev/null | wc -l)
+    echo "$file : $count"
+done
+
+echo "----------------------------------------"
+echo "Search completed successfully."
