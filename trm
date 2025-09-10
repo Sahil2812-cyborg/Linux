@@ -1,0 +1,25 @@
+#!/bin/bash
+
+
+TRASH="/home/sahil/.trash"
+
+mkdir -p "$TRASH"
+
+
+if [ "$#" -lt 1 ]; then
+	echo "There should be a file or dir passed with this"
+fi
+
+
+for FILE in "$@"; do
+	if [ -e "$FILE" ]; then
+		TIMESTAMP=$(date +%Y%m%d%H%M%S)
+    		BASENAME=$(basename "$FILE")
+    		mv "$FILE" "$TRASH/${BASENAME}_$TIMESTAMP"
+    		echo "Moved $FILE to trash."
+	else
+		echo "File does not exist"
+	fi
+done
+
+
