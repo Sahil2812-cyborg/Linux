@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Safely remove file/dir without permanantly 
+#Author : Sahil
+
 
 TRASH="/home/sahil/.trash"
 
