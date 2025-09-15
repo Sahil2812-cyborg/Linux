@@ -9,7 +9,7 @@ echo "Looking for USB drive: $USB_LABEL"
 
 # Show available drives for debugging
 echo "Available mounted drives:"
-for mount in /media/$USER/* /mnt/* /Volumes/*; do
+for mount in /media/$USER/* /mnt/* ; do
     if [ -d "$mount" ]; then
         echo "  - $(basename "$mount") at $mount"
     fi
@@ -17,7 +17,7 @@ done
 
 # Find USB drive
 USB_PATH=""
-for mount in /media/$USER/* /mnt/* /Volumes/*; do
+for mount in /media/$USER/* /mnt/* ; do
     if [ -d "$mount" ] && [ "$(basename "$mount")" = "$USB_LABEL" ]; then
         USB_PATH="$mount"
         break
